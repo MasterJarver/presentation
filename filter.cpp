@@ -13,15 +13,15 @@ bool filter::eventFilter(QObject *obj, QEvent *event)
         if (keyEvent->key() == Qt::Key_Alt) { // добавление полей по нажатию alt
             m_dialog->insertNewDevice();
         }
-//        if(keyEvent->key() == Qt::Key_Escape) // отмена фокуса по нажатию esc
-//        {
-//            // тут меняем фокус итема
+        if(keyEvent->key() == Qt::Key_Escape) // отмена фокуса по нажатию esc
+        {
+            // тут меняем фокус итема
 
-//            if(keyEvent->key() == Qt::Key_Escape) // по нажатию дважды esc выход из приложения
-//            {
-//                exit(0); // выходим из приложения
-//            }
-//        }
+            if(keyEvent->key() == Qt::Key_Escape) // по нажатию дважды esc выход из приложения
+            {
+                exit(0); // выходим из приложения
+            }
+        }
         return true;
     } else {
         // standard event processing
