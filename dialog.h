@@ -19,7 +19,12 @@ class Dialog : public QDialog
 public:
     explicit Dialog(QWidget *parent = nullptr);
     ~Dialog();
+    QVector<ItemLayout*> getInputs(); // возвращает вектор инпутов
+    ItemLayout* getFocusElement(); // возвращает указатель на элемент в фокусе
+    void setFocusElement(int index); // сетит фокус
+    int getCount(); // возвращает количество элементов в векторе
 private:    
+    ItemLayout* focusElement = nullptr; // указатель на элемент в фокусе
     QVector<ItemLayout*> inputs; // вектор для хранения inputs
     int count = 0; // счетчик девайсов
     Ui::Dialog *ui;

@@ -3,8 +3,8 @@
 
 #include <QObject>
 #include "dialog.h"
-
-class filter : public QObject
+#include <QApplication>
+class filter : public QObject // класс отслеживающий нажатия клавиш
 {
     Q_OBJECT
 public:

@@ -19,8 +19,19 @@ bool filter::eventFilter(QObject *obj, QEvent *event)
 
             if(keyEvent->key() == Qt::Key_Escape) // по нажатию дважды esc выход из приложения
             {
-                exit(0); // выходим из приложения
+                qApp->exit(0); // выходим из приложения
             }
+        }
+        if(keyEvent->key() == Qt::Key_Down) // если нажата кнопка стрелка вниз
+        {
+            int index = m_dialog->getInputs().indexOf(m_dialog->getFocusElement()); // нашли индекс элемента в фокусе
+            qDebug() << "final index" << index;
+
+            m_dialog->getInputs().at(index + 1)->getEmail()->setFocus(Qt::FocusReason::ActiveWindowFocusReason); // сетит в фокус следующий элемент в UI
+
+            // тут меняем указатель на фокус
+            m_dialog->setFocusElement(index + 1); // = m_dialog->getInputs().at(index + 1); // сетит указатель на фокус
+            qDebug() << "button Down was pushed";
         }
         return true;
     } else {
