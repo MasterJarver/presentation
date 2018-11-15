@@ -48,6 +48,8 @@ void Dialog::deleteDevice(ItemLayout* item) // выполняется по на�
     layout()->removeWidget(item->getEmail());
     delete item->getEmail();
     inputs.removeAt(inputs.indexOf(item)); // удаляем объект из вектора, тут траблов нет
+    if(inputs.count() == 0)
+        exit(0);
 }
 
 void Dialog::sendReference(ItemLayout *item) // выполняется по нажатию кнопки Ok
