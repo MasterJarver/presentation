@@ -26,12 +26,23 @@ bool filter::eventFilter(QObject *obj, QEvent *event)
         {
             int index = m_dialog->getInputs().indexOf(m_dialog->getFocusElement()); // нашли индекс элемента в фокусе
             qDebug() << "final index" << index;
-
-            m_dialog->getInputs().at(index + 1)->getEmail()->setFocus(Qt::FocusReason::ActiveWindowFocusReason); // сетит в фокус следующий элемент в UI
-
             // тут меняем указатель на фокус
-            m_dialog->setFocusElement(index + 1); // = m_dialog->getInputs().at(index + 1); // сетит указатель на фокус
+            if(index < m_dialog->getInputs().count() - 1)
+            {
+                m_dialog->getInputs().at(index + 1)->getEmail()->setFocus(Qt::FocusReason::ActiveWindowFocusReason); // сетит в фокус следующий элемент в UI
+                m_dialog->setFocusElement(index + 1); // = m_dialog->getInputs().at(index + 1); // сетит указатель на фокус
+            }
             qDebug() << "button Down was pushed";
+        }
+        if(keyEvent->key() == Qt::Key_Up)
+        {
+            int index = m_dialog->getInputs().indexOf(m_dialog->getFocusElement()); // нашли индекс элемента в фокусе
+            if(index > 0)
+            {
+                m_dialog->getInputs().at(index - 1)->getEmail()->setFocus(Qt::FocusReason::ActiveWindowFocusReason); // сетит в фокус следующий элемент в UI
+                m_dialog->setFocusElement(index - 1); // = m_dialog->getInputs().at(index + 1); // сетит указатель на фокус
+            }
+            qDebug() << "button Up was pushed";
         }
         return true;
     } else {
