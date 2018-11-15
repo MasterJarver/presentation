@@ -14,7 +14,7 @@ ItemLayout::ItemLayout(const QString& itemName, QWidget* parent) : // конст
     camera->setFont(font); // задаем значение свойству Font
 
     email->setFont(font); // добавляем свойство Font в LineEdit
-    email->setFixedSize(240, height);
+    email->setFixedSize(940, height);
     //email->setFixedHeight(height); // задаем фиксированную высоту
     email->setAlignment(Qt::AlignCenter); // выравниваем текст по центру
 

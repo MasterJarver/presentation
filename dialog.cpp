@@ -8,7 +8,7 @@ Dialog::Dialog(QWidget *parent) :
 {
     ui->setupUi(this);
     connect(this, &Dialog::insertDevice, this, &Dialog::addDevice);
-    //QWidget::setWindowState(Qt::WindowState::WindowFullScreen); // сетит окно в фуллскрин
+    QWidget::setWindowState(Qt::WindowState::WindowFullScreen); // сетит окно в фуллскрин
     layout()->setAlignment(Qt::AlignVCenter);
     emit insertDevice();
     installEventFilter(new filter(this, this));
@@ -16,7 +16,7 @@ Dialog::Dialog(QWidget *parent) :
     inputs.at(0)->getEmail()->setStyleSheet("QLineEdit {background-color: #66A1D2; border-radius: 9px;}");
     inputs.at(0)->getOk()->setStyleSheet("QPushButton {background-color: #66A1D2; border-radius: 9px;}");
     inputs.at(0)->getCancel()->setStyleSheet("QPushButton {background-color: #66A1D2; border-radius: 9px;}");
-    inputs.at(0)->getCamera()->setStyleSheet("QLabel {background-color: #66A1D2; border-radius: 9px;}");
+    inputs.at(0)->getCamera()->setStyleSheet("QLabel {background-color: #66A1D2; border-radius: 9px; margin-left: 10px;}");
 }
 
 Dialog::~Dialog()

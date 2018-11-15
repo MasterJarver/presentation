@@ -22,6 +22,10 @@ bool filter::eventFilter(QObject *obj, QEvent *event)
                 qApp->exit(0); // выходим из приложения
             }
         }
+        if(keyEvent->key() == Qt::Key_Tab) // нажатие tab не работает
+        {
+            qDebug() << "hello";
+        }
         if(keyEvent->key() == Qt::Key_Down) // если нажата кнопка стрелка вниз
         {
             int index = m_dialog->getInputs().indexOf(m_dialog->getFocusElement()); // нашли индекс элемента в фокусе
@@ -43,7 +47,7 @@ bool filter::eventFilter(QObject *obj, QEvent *event)
                 m_dialog->getInputs().at(index + 1)->getEmail()->setStyleSheet("QLineEdit {background-color: #66A1D2; border-radius: 9px;}");
                 m_dialog->getInputs().at(index + 1)->getOk()->setStyleSheet("QPushButton {background-color: #66A1D2; border-radius: 9px;}");
                 m_dialog->getInputs().at(index + 1)->getCancel()->setStyleSheet("QPushButton {background-color: #66A1D2; border-radius: 9px;}");
-                m_dialog->getInputs().at(index + 1)->getCamera()->setStyleSheet("QLabel {background-color: #66A1D2; border-radius: 9px;}");
+                m_dialog->getInputs().at(index + 1)->getCamera()->setStyleSheet("QLabel {background-color: #66A1D2; border-radius: 9px; margin-left: 10px;}");
             }
             qDebug() << "button Down was pushed";
         }
@@ -64,7 +68,7 @@ bool filter::eventFilter(QObject *obj, QEvent *event)
                 m_dialog->getInputs().at(index - 1)->getEmail()->setStyleSheet("QLineEdit {background-color: #66A1D2; border-radius: 9px;}");
                 m_dialog->getInputs().at(index - 1)->getOk()->setStyleSheet("QPushButton {background-color: #66A1D2; border-radius: 9px;}");
                 m_dialog->getInputs().at(index - 1)->getCancel()->setStyleSheet("QPushButton {background-color: #66A1D2; border-radius: 9px;}");
-                m_dialog->getInputs().at(index - 1)->getCamera()->setStyleSheet("QLabel {background-color: #66A1D2; border-radius: 9px;}");
+                m_dialog->getInputs().at(index - 1)->getCamera()->setStyleSheet("QLabel {background-color: #66A1D2; border-radius: 9px; margin-left: 10px;}");
             }
             qDebug() << "button Up was pushed";
         }
