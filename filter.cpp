@@ -49,16 +49,20 @@ bool filter::eventFilter(QObject *obj, QEvent *event)
                 m_dialog->getInputs().at(index + 1)->getCancel()->setStyleSheet("QPushButton {background-color: #66A1D2; border-radius: 9px;}");
                 m_dialog->getInputs().at(index + 1)->getCamera()->setStyleSheet("QLabel {background-color: #66A1D2; border-radius: 9px; margin-left: 10px;}");
             }
+            else if(index == m_dialog->getInputs().count() - 1)
+            {
+                qDebug() << "index == max count";
+            }
             else
             {
-              index = m_dialog->getInputs().count() - 1;
-              m_dialog->getInputs().at(index)->getEmail()->setFocus(Qt::FocusReason::ActiveWindowFocusReason); // сетит в фокус следующий элемент
-              m_dialog->setFocusElement(index); // = m_dialog->getInputs().at(index + 1); // сетит указатель на фокус
-              // задает стили новому элементу
-              m_dialog->getInputs().at(index)->getEmail()->setStyleSheet("QLineEdit {background-color: #66A1D2; border-radius: 9px;}");
-              m_dialog->getInputs().at(index)->getOk()->setStyleSheet("QPushButton {background-color: #66A1D2; border-radius: 9px;}");
-              m_dialog->getInputs().at(index)->getCancel()->setStyleSheet("QPushButton {background-color: #66A1D2; border-radius: 9px;}");
-              m_dialog->getInputs().at(index)->getCamera()->setStyleSheet("QLabel {background-color: #66A1D2; border-radius: 9px; margin-left: 10px;}");
+                index = 0;
+                m_dialog->getInputs().at(index)->getEmail()->setFocus(Qt::FocusReason::ActiveWindowFocusReason); // сетит в фокус следующий элемент
+                m_dialog->setFocusElement(index); // = m_dialog->getInputs().at(index + 1); // сетит указатель на фокус
+                // задает стили элементу
+                m_dialog->getInputs().at(index)->getEmail()->setStyleSheet("QLineEdit {background-color: #66A1D2; border-radius: 9px;}");
+                m_dialog->getInputs().at(index)->getOk()->setStyleSheet("QPushButton {background-color: #66A1D2; border-radius: 9px;}");
+                m_dialog->getInputs().at(index)->getCancel()->setStyleSheet("QPushButton {background-color: #66A1D2; border-radius: 9px;}");
+                m_dialog->getInputs().at(index)->getCamera()->setStyleSheet("QLabel {background-color: #66A1D2; border-radius: 9px; margin-left: 10px;}");
             }
             qDebug() << "button Down was pushed";
         }
@@ -82,17 +86,22 @@ bool filter::eventFilter(QObject *obj, QEvent *event)
                 m_dialog->getInputs().at(index - 1)->getCancel()->setStyleSheet("QPushButton {background-color: #66A1D2; border-radius: 9px;}");
                 m_dialog->getInputs().at(index - 1)->getCamera()->setStyleSheet("QLabel {background-color: #66A1D2; border-radius: 9px; margin-left: 10px;}");
             }
+            else if(index == 0)
+            {
+                qDebug() << "index == 0";
+            }
             else
             {
-                index = 0;
+                index = m_dialog->getInputs().count() - 1;
                 m_dialog->getInputs().at(index)->getEmail()->setFocus(Qt::FocusReason::ActiveWindowFocusReason); // сетит в фокус следующий элемент
                 m_dialog->setFocusElement(index); // = m_dialog->getInputs().at(index + 1); // сетит указатель на фокус
-                // задает стили элементу
+                // задает стили новому элементу
                 m_dialog->getInputs().at(index)->getEmail()->setStyleSheet("QLineEdit {background-color: #66A1D2; border-radius: 9px;}");
                 m_dialog->getInputs().at(index)->getOk()->setStyleSheet("QPushButton {background-color: #66A1D2; border-radius: 9px;}");
                 m_dialog->getInputs().at(index)->getCancel()->setStyleSheet("QPushButton {background-color: #66A1D2; border-radius: 9px;}");
                 m_dialog->getInputs().at(index)->getCamera()->setStyleSheet("QLabel {background-color: #66A1D2; border-radius: 9px; margin-left: 10px;}");
             }
+
             qDebug() << "button Up was pushed";
         }
         return true;
