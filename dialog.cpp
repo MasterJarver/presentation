@@ -13,6 +13,10 @@ Dialog::Dialog(QWidget *parent) :
     emit insertDevice();
     installEventFilter(new filter(this, this));
     focusElement = inputs.at(0); // сетим указатель на первый элемент в векторе
+    inputs.at(0)->getEmail()->setStyleSheet("QLineEdit {background-color: #66A1D2; border-radius: 9px;}");
+    inputs.at(0)->getOk()->setStyleSheet("QPushButton {background-color: #66A1D2; border-radius: 9px;}");
+    inputs.at(0)->getCancel()->setStyleSheet("QPushButton {background-color: #66A1D2; border-radius: 9px;}");
+    inputs.at(0)->getCamera()->setStyleSheet("QLabel {background-color: #66A1D2; border-radius: 9px;}");
 }
 
 Dialog::~Dialog()

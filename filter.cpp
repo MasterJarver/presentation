@@ -29,8 +29,21 @@ bool filter::eventFilter(QObject *obj, QEvent *event)
             // тут меняем указатель на фокус
             if(index < m_dialog->getInputs().count() - 1)
             {
-                m_dialog->getInputs().at(index + 1)->getEmail()->setFocus(Qt::FocusReason::ActiveWindowFocusReason); // сетит в фокус следующий элемент в UI
+                // очищает стили всех элементов
+                m_dialog->getInputs().at(index)->getEmail()->setStyleSheet("QLineEdit {background-color: #00000;}");
+                m_dialog->getInputs().at(index)->getOk()->setStyleSheet("QPushButton {background-color: #00000;}");
+                m_dialog->getInputs().at(index)->getCancel()->setStyleSheet("QPushButton {background-color: #00000;}");
+                m_dialog->getInputs().at(index)->getCamera()->setStyleSheet("QLabel {background-color: #00000;}");
+
+                // сетит фокус
+                m_dialog->getInputs().at(index + 1)->getEmail()->setFocus(Qt::FocusReason::ActiveWindowFocusReason); // сетит в фокус следующий элемент
                 m_dialog->setFocusElement(index + 1); // = m_dialog->getInputs().at(index + 1); // сетит указатель на фокус
+
+                // задает стили новому элементу
+                m_dialog->getInputs().at(index + 1)->getEmail()->setStyleSheet("QLineEdit {background-color: #66A1D2; border-radius: 9px;}");
+                m_dialog->getInputs().at(index + 1)->getOk()->setStyleSheet("QPushButton {background-color: #66A1D2; border-radius: 9px;}");
+                m_dialog->getInputs().at(index + 1)->getCancel()->setStyleSheet("QPushButton {background-color: #66A1D2; border-radius: 9px;}");
+                m_dialog->getInputs().at(index + 1)->getCamera()->setStyleSheet("QLabel {background-color: #66A1D2; border-radius: 9px;}");
             }
             qDebug() << "button Down was pushed";
         }
@@ -39,8 +52,19 @@ bool filter::eventFilter(QObject *obj, QEvent *event)
             int index = m_dialog->getInputs().indexOf(m_dialog->getFocusElement()); // нашли индекс элемента в фокусе
             if(index > 0)
             {
-                m_dialog->getInputs().at(index - 1)->getEmail()->setFocus(Qt::FocusReason::ActiveWindowFocusReason); // сетит в фокус следующий элемент в UI
+                // оищает стили всех элементов
+                m_dialog->getInputs().at(index)->getEmail()->setStyleSheet("QLineEdit {background-color: #00000;}");
+                m_dialog->getInputs().at(index)->getOk()->setStyleSheet("QPushButton {background-color: #00000;}");
+                m_dialog->getInputs().at(index)->getCancel()->setStyleSheet("QPushButton {background-color: #00000;}");
+                m_dialog->getInputs().at(index)->getCamera()->setStyleSheet("QLabel {background-color: #00000;}");
+                // сетит фокус
+                m_dialog->getInputs().at(index - 1)->getEmail()->setFocus(Qt::FocusReason::ActiveWindowFocusReason); // сетит в фокус следующий элемент
                 m_dialog->setFocusElement(index - 1); // = m_dialog->getInputs().at(index + 1); // сетит указатель на фокус
+                // задает стили элементу
+                m_dialog->getInputs().at(index - 1)->getEmail()->setStyleSheet("QLineEdit {background-color: #66A1D2; border-radius: 9px;}");
+                m_dialog->getInputs().at(index - 1)->getOk()->setStyleSheet("QPushButton {background-color: #66A1D2; border-radius: 9px;}");
+                m_dialog->getInputs().at(index - 1)->getCancel()->setStyleSheet("QPushButton {background-color: #66A1D2; border-radius: 9px;}");
+                m_dialog->getInputs().at(index - 1)->getCamera()->setStyleSheet("QLabel {background-color: #66A1D2; border-radius: 9px;}");
             }
             qDebug() << "button Up was pushed";
         }
